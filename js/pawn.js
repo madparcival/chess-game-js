@@ -6,15 +6,14 @@ let rows=['A','B','C','D','E','F','G','H']
             let position=currentElement.parentElement.classList[0]
             let temp=rows.indexOf(position[0])
             position=rows[temp+1]+position[1]
-            let to=document.querySelector(`.${position}`)
-            console.log(to)
+            let pawnTo=document.querySelector(`.${position}`)
 
-            to.addEventListener('dragover',function(e){
+            pawnTo.addEventListener('dragover',function(e){
                 e.preventDefault()
             })
             
-            to.addEventListener('drop',function(e){
-                to.appendChild(currentElement)
+            pawnTo.addEventListener('drop',function(e){
+                pawnTo.appendChild(currentElement)
                 currentElement=null
             })
         })
@@ -26,15 +25,14 @@ let rows=['A','B','C','D','E','F','G','H']
             let position=currentElement.parentElement.classList[0]
             let temp=rows.indexOf(position[0])
             position=rows[temp-1]+position[1]
-            let to=document.querySelector(`.${position}`)
-            console.log(to)
+            let pawnTo=document.querySelector(`.${position}`)
 
-            to.addEventListener('dragover',function(e){
+            pawnTo.addEventListener('dragover',function(e){
                 e.preventDefault()
             })
             
-            to.addEventListener('drop',function(e){
-                to.appendChild(currentElement)
+            pawnTo.addEventListener('drop',function(e){
+                pawnTo.appendChild(currentElement)
                 currentElement=null
             })
         })

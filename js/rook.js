@@ -1,35 +1,32 @@
 let rookElementsArray=document.querySelectorAll('.rook')
-    
-        for(ele of rookElementsArray){
-            ele.addEventListener('dragstart',function(e){
-            let currentElement=e.target
-            
-                document.getElementsByClassName(`A1`)[0].addEventListener('dragover',function(e){
-                    e.preventDefault()
-                })
-                document.getElementsByClassName(`A1`)[0].addEventListener('drop',function(e){
-                    console.log(currentElement)               
-                    // document.getElementById('icon').classList.replace('fa-square-check','fa-list-check')                    
-                    document.getElementsByClassName(`A1`)[0].appendChild(currentElement)
-                    currentElement=null
-                })
-                document.getElementsByClassName(`A2`)[0].addEventListener('dragover',function(e){
-                    e.preventDefault()
-                })
-                document.getElementsByClassName(`A2`)[0].addEventListener('drop',function(e){
-                    console.log(currentElement)               
-                    // document.getElementById('icon').classList.replace('fa-square-check','fa-list-check')                    
-                    document.getElementsByClassName(`A2`)[0].appendChild(currentElement)
-                    currentElement=null
-                })
-                document.getElementsByClassName(`A3`)[0].addEventListener('dragover',function(e){
-                    e.preventDefault()
-                })
-                document.getElementsByClassName(`A3`)[0].addEventListener('drop',function(e){
-                    console.log(currentElement)               
-                    // document.getElementById('icon').classList.replace('fa-square-check','fa-list-check')                    
-                    document.getElementsByClassName(`A3`)[0].appendChild(currentElement)
-                    currentElement=null
-                })
-            })
+let columns=[1,2,3,4,5,6,7,8]
+
+    for(ele of rookElementsArray){
+        ele.addEventListener('dragstart',function(e){
+        let currentElement=e.target
+        let position=currentElement.parentElement.classList[0]
+        let rookMovementsArray=[]
+
+        for(i of rows){
+            rookMovementsArray.push(i+position[1])
         }
+        for(j of columns){
+            rookMovementsArray.push(position[0]+j)
+        }
+
+        for(tile of rookMovementsArray){
+            let rookTo = document.querySelector(`.${tile}`)
+            rookTo.addEventListener('dragover',function(e){
+                e.preventDefault()
+            })
+            
+            rookTo.addEventListener('drop',function(e){
+                rookTo.appendChild(currentElement)
+                currentElement=null
+            })
+                
+            
+        }
+    })
+
+    }
